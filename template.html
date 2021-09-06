@@ -67,6 +67,10 @@
     get_image.style.left =`${slider.getBoundingClientRect().left}px`;
     filename.style.left = `${slider.getBoundingClientRect().left + 100}px`;
 </script>
+<div class="radio">
+    <input type="radio" id="r1" name="slide" value="Horizontal" checked="checked"> Horizontal <br/>
+    <input type="radio" id="r2" name="slide" value="Vertical"> Vertical <br/>
+</div>
 <div class="discription">
     {% if result_info %}
     <!-- {% autoescape false %} -->
@@ -77,8 +81,12 @@
     {% endif %}
 </div>
 <script>
+    radio = document.getElementsByClassName("radio")[0];
     discription = document.getElementsByClassName("discription")[0];
-    discription.style.height = `${slider.getBoundingClientRect().height}px`;
+    discription.style.height = `${slider.getBoundingClientRect().height - radio.getBoundingClientRect().height - 10}px`;
+    discription.style.top = `${discription.getBoundingClientRect().top + radio.getBoundingClientRect().height + 10}px`;
+    radio.style.left = `${discription.getBoundingClientRect().left}px`
+    radio.style.top = `${slider.getBoundingClientRect().top}px`
 </script>
 <br/>
 

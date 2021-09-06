@@ -166,3 +166,7 @@ body {
     transform: translateX(-50%);
     color: blue;
 }
+
+.radio {
+    position: absolute;
+}
