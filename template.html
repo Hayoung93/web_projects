@@ -81,12 +81,15 @@
     {% endif %}
 </div>
 <script>
-    radio = document.getElementsByClassName("radio")[0];
-    discription = document.getElementsByClassName("discription")[0];
-    discription.style.height = `${slider.getBoundingClientRect().height - radio.getBoundingClientRect().height - 10}px`;
-    discription.style.top = `${discription.getBoundingClientRect().top + radio.getBoundingClientRect().height + 10}px`;
-    radio.style.left = `${discription.getBoundingClientRect().left}px`
-    radio.style.top = `${slider.getBoundingClientRect().top}px`
+    window.addEventListener("load", function(){
+        radio = document.getElementsByClassName("radio")[0];
+        discription = document.getElementsByClassName("discription")[0];
+        discription.style.height = `${slider.getBoundingClientRect().height - radio.getBoundingClientRect().height - 10}px`;
+        discription.style.top = `${discription.getBoundingClientRect().top + radio.getBoundingClientRect().height + 10}px`;
+        discription.style.width = `${slider.getBoundingClientRect().width - 10}px`;
+        radio.style.left = `${discription.getBoundingClientRect().left}px`
+        radio.style.top = `${slider.getBoundingClientRect().top}px`
+    });
 </script>
 <br/>
 

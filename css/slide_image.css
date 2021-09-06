@@ -28,14 +28,12 @@ body {
     top: 15%;
     /* left: 50%;
     transform: translateX(-100%); */
-    height: 100%;
     margin: 0;
     padding: 0;
     user-select: none;
     overflow: hidden;
     /* touch-action: pan-x; */
     max-width: 40%;
-    max-height: 50%;
     float: inline-start;
 }
 
@@ -130,8 +128,6 @@ body {
     top: 15%;
     left: 50%;
     transform: translateX(10%);
-    max-width: 15%;
-    min-width: 300px;
     border: 1px solid black;
     text-align: left;
 }
