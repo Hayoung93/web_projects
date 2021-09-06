@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="/workspace/denoise_server/css/slide_image.css">
+        <!-- <script>
+            function deleteAllCookies() {
+                var cookies = document.cookie.split(";");
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    var eqPos = cookie.indexOf("=");
+                    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                }
+            }
+            deleteAllCookies();
+        </script> -->
+</head>
+<body>
+
+<div class="title">
+    <h1>KETI Denoising Demo</h1>
+</div>
+
+
+<form method="POST" action="http://0.0.0.0:7700/denoise" enctype="multipart/form-data">
+<!-- <div class="get_root">
+    <p><input type="text" name="root"></p>
+</div> -->
+<div class="get_image">
+    <p><input type="file" name="image" accept=".jpg, .jpeg, .tif, .bmp" onchange="form.submit()"></p>
+</div>
+<div class="show_name">
+    {% if input_image %}
+    <p id="text">{{ input_image }}</p>
+    {% endif %}
+</div>
+</form>
+
+<br/>
+<!--img src="{{ user_image }}" alt="test image" width="500"-->
+<div class="inner">
+<div class="comparison-slider">
+    <figure>
+        <img src="{{ input_image  }}" alt="original" />
+        <figcaption>before</figcaption>
+    </figure>
+    <figure>
+        <img src="{{ user_image }}" alt="modified" />
+        <figcaption>after</figcaption>
+    </figure>
+    <div class="vline">
+    </div>
+</div>
+
+</div>
+<script src="/workspace/denoise_server/javascript/image_slider.js"></script>
+<script>
+    get_image = document.getElementsByClassName("get_image")[0];
+    slider = document.getElementsByClassName("comparison-slider")[0];
+    filename = document.getElementsByClassName("show_name")[0];
+    width = document.body.clientWidth;
+    slider.style.left = `${width / 2 - slider.getBoundingClientRect().width}px`
+    get_image.style.left =`${slider.getBoundingClientRect().left}px`;
+    filename.style.left = `${slider.getBoundingClientRect().left + 100}px`;
+</script>
+<div class="discription">
+    {% if result_info %}
+    <!-- {% autoescape false %} -->
+    {% for para in result_info %}
+    <p id="text">{{ para }}</p>
+    {% endfor %}
+    <!-- {% endautoescape %} -->
+    {% endif %}
+</div>
+<script>
+    discription = document.getElementsByClassName("discription")[0];
+    discription.style.height = `${slider.getBoundingClientRect().height}px`;
+</script>
+<br/>
+
+
+
+</body>
+</html>
